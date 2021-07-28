@@ -1,0 +1,100 @@
+
+<div class="container">
+    <div class="row">
+            <form (ngSubmit)="saveStock()" #f="ngForm">
+
+
+                    <div class="form-group" >
+                            <input type="text" name="Stock name" [(ngModel)]="stock.stockName" placeholder="Enter Stock name" 
+                            class="form-control col-md-12" required ngModel #a="ngModel" />
+                    </div>
+                    <br/>
+                    <div class="alert alert-danger" *ngIf="a.invalid && a.touched">
+                        invalid name
+                    </div>
+                    <br/>
+                    <div class="form-group">
+                        <input type="number" name="Product Number" [(ngModel)]="stock.productNumber" placeholder="Enter Product Quantity" 
+                        class="form-control col-md-12" required ngModel #b="ngModel" />
+                    </div>
+                    <br/>
+                    <div class="alert alert-danger" *ngIf="b.invalid && b.touched">
+                        Invalid number
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <input type="text" name="Stock Type" [(ngModel)]="stock.stockType"
+                        placeholder="Enter stock Type" class="form-control col-md-12 " required ngModel #c="ngModel"/>
+                    </div>
+                    <br/>
+                    <div class="alert alert-danger" *ngIf="c.invalid && c.touched">
+                        Invalid stock Type
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <input type="text" name="stock Category" [(ngModel)]="stock.stockCategory" placeholder="Enter stock category" 
+                        class="form-control col-md-12" required ngModel #d="ngModel" />
+                    </div>
+                    <br/>
+                    <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+                        Invalid stock Category
+                    </div>
+                    <br/>
+
+                    
+
+                    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Add stock</button>
+                    <button *ngIf="stock.id" (click)="deleteStock(stock.id)" class="btn btn-danger">Delete</button>
+                    <br/>
+                    <br/>
+                    <div *ngIf="errStock" class="alert alert-danger" >
+                      <h3>This stock category doesn't exist in rayon</h3>
+                     
+                    </div>
+
+            </form>
+            <br/>
+
+            
+    </div>
+</div>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Rayon List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+
+            <th>Rayon number</th>
+            <th>Rayon name</th>
+            <th>Rayon type</th>
+            <th>Rayon category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rayon of rayons">
+
+   
+           
+
+            <td>{{rayon.id}}</td>
+            <td>{{rayon.rayonName}}</td>
+            <td>{{rayon.rayonType}}</td>
+            <td>{{rayon.rayonCategory}}</td>
+            
+            
+
+            <td><button (click)="deleteRayon(rayon.id)" class="btn btn-danger">Delete</button>
+                <button routerLink="/rayon/update/{{rayon.id}}" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td>
+            
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>

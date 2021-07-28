@@ -1,0 +1,46 @@
+
+<div class="container">
+    <div class="row">
+            <form (ngSubmit)="saveRayon()" #f="ngForm">
+
+               
+                    <br/>
+
+                    <div class="form-group">
+                            <input type="text" name="Rayon name" [(ngModel)]="rayon.rayonName" placeholder="Enter Rayon name" 
+                            class="form-control col-md-12" required ngModel #b="ngModel" />
+                    </div>
+                    <br/>
+                    <div class="alert alert-danger" *ngIf="b.invalid && b.touched">
+                        Invalid name
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <input type="text" name="Rayon Type" [(ngModel)]="rayon.rayonType"
+                        placeholder="Enter rayon Type" class="form-control col-md-12 " required ngModel #c="ngModel"/>
+                    </div>
+                    <br/>
+                    <div class="alert alert-danger" *ngIf="c.invalid && c.touched">
+                        Invalid type
+                    </div>
+                    <br/>
+
+                    <div class="form-group">
+                        <input type="text" name="Rayon Category" [(ngModel)]="rayon.rayonCategory" placeholder="Enter Rayon category" 
+                        class="form-control col-md-12" required ngModel #d="ngModel"/>
+                    </div>
+                    <br/>
+                    <div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+                        Invalid category
+                    </div>
+                    <br/>
+
+                    
+
+                    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Add Rayon</button>
+                    <button *ngIf="rayon.id" (click)="deleteRayon(rayon.id)" class="btn btn-danger">Delete</button>
+
+            </form>
+    </div>
+</div>

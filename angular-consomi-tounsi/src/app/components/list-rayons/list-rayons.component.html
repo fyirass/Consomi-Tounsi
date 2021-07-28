@@ -1,0 +1,68 @@
+<div class="row">
+    <div class="col-md-4">
+        <input type="text"
+            [(ngModel)]="filters.keyword"
+            name="keyword"
+            (input)="listRayons()" 
+            class="form-control"
+            placeholder="Filter rayon"/>
+    </div>
+    <div class="col-md-4">
+        <select name="sortBy" 
+                [(ngModel)]="filters.sortBy" 
+                (change)="listRayons()"
+                class="form-control">
+            <option>Rayon id</option>
+            <option>Rayon name</option>
+        </select>
+    </div>
+    <div class="col-md-4">
+        <a class="btn btn-primary text-light" routerLink="/rayon/add">Add Rayon</a>
+    </div>
+</div><br>
+
+
+
+
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h2>Rayon List</h2>
+    </div>
+    <div class="panel-body">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+
+            <th>Rayon number</th>
+            <th>Rayon name</th>
+            <th>Rayon type</th>
+            <th>Rayon category</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let rayon of rayons">
+
+   
+           
+
+            <td>{{rayon.id}}</td>
+            <td>{{rayon.rayonName}}</td>
+            <td>{{rayon.rayonType}}</td>
+            <td>{{rayon.rayonCategory}}</td>
+            
+            
+
+            <td><button (click)="deleteRayon(rayon.id)" class="btn btn-danger">Delete</button>
+                <button routerLink="/rayon/update/{{rayon.id}}" class="btn btn-info" style="margin-left: 10px">Update</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+
+
+

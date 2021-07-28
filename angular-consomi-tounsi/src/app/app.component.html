@@ -1,0 +1,57 @@
+<div id="app">
+  <nav class="navbar navbar-expand navbar-dark bg-dark">
+    <ul class="navbar-nav mr-auto" routerLinkActive="active">
+      <li>
+        <table>
+          <tr>
+            <th>
+              <a href="/home" class="nav-link" routerLink="home"><img src="assets/images/ctoun.png" width="160" height="80"></a>
+            </th>
+            <th>
+              <a href="/home" class="nav-link home-button" routerLink="home"><h1>Home</h1></a>
+            </th>
+            <th class="nav-item" *ngIf="showAdminBoard">
+              <a href="/admin" class="nav-link" routerLink="admin"><h1>Admin Board</h1></a>
+            </th>
+            <th class="nav-item" *ngIf="showUserBoard">
+              <a href="/user" class="nav-link" routerLink="user"><h1>User Board</h1></a>
+            </th>
+          </tr>
+        </table>
+      </li>
+      
+      
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="!isLoggedIn">
+      <li class="nav-item">
+        <a href="/register" class="nav-link" routerLink="register"><h2>Sign Up</h2></a>
+      </li>
+      <li class="nav-item">
+        <a href="/login" class="nav-link" routerLink="login"><h2>LogIn</h2></a>
+      </li>
+    </ul>
+
+    <ul class="navbar-nav ml-auto" *ngIf="isLoggedIn">
+      <li class="nav-item">
+        <a href="/profile" class="nav-link" routerLink="profile"><h2>{{ username }}</h2></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/invoices" class="nav-link" routerLink="invoices"><h2>invoices</h2></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/rayons" class="nav-link" routerLink="rayons"><h2>rayons</h2></a>
+      </li>
+      <li class="nav-item" *ngIf="showAdminBoard">
+        <a href="/stocks" class="nav-link" routerLink="stocks"><h2>stocks</h2></a>
+      </li>
+      <li class="nav-item">
+        <a href class="nav-link" (click)="logout()"><h2>LogOut</h2></a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
